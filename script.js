@@ -206,10 +206,6 @@ buttons.forEach(button => {
     if(operation == 'divide') {
       solution = operate("/", num1, num2);
     }
-
-    console.log(num1);
-    console.log(num2);
-    console.log(operation);
   });
 });
     
