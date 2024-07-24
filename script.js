@@ -13,7 +13,7 @@ const multiply = function(multiplicand, multiplier) {
 
 const divide = function(dividend, divisor) {
   if(divisor == 0) {
-    return "lmao";
+    return "LMAO";
   }
   return  Math.round((dividend / divisor) * 100) / 100;
 };
@@ -47,7 +47,7 @@ const displayElement = document.getElementById('display');
 
 // Function to update the display
 function updateDisplay() {
-  displayElement.textContent = displayValue;
+  displayElement.textContent = displayValue.slice(0,8);
 }
 
 // Add click event listeners to number buttons
@@ -59,6 +59,14 @@ for (let i = 0; i <= 9; i++) {
     updateDisplay(); // Update the display
   });
 }
+
+// Add click even listener for backspace
+const backspace = document.getElementById('delete');
+backspace.addEventListener('click', function() {
+  displayValue = displayValue.substring(0, displayValue.length-1);
+  num2 = Number(displayValue);
+  updateDisplay();
+});
 
 // Add click event listener for decimal point
 let stop = false;
@@ -81,7 +89,7 @@ const addition = document.getElementById('add');
 addition.addEventListener('click', function() {
     if(num1 > 0)
     {
-      displayElement.textContent = solution;
+      displayElement.textContent = solution.toString().slice(0,8);
       num1 = solution;
       num2 = num1;
     }
@@ -95,7 +103,7 @@ const subtraction = document.getElementById('subtract');
 subtraction.addEventListener('click', function() {
     if(num1 != 0)
     {
-      displayElement.textContent = solution;
+      displayElement.textContent = solution.toString().slice(0, 8);
       num1 = solution;
       num2 = num1;
     }
@@ -109,7 +117,7 @@ const multiplication = document.getElementById('multiply');
 multiplication.addEventListener('click', function() {
     if(num1 != 0)
     {
-      displayElement.textContent = solution;
+      displayElement.textContent = solution.toString().slice(0, 8);
       num1 = solution;
       num2 = num1;
     }
@@ -123,7 +131,7 @@ const division = document.getElementById('divide');
 division.addEventListener('click', function() {
     if(num1 != 0)
     {
-      displayElement.textContent = solution;
+      displayElement.textContent = solution.toString().slice(0, 8);
       num1 = solution;
       num2 = num1;
     }
@@ -138,7 +146,9 @@ division.addEventListener('click', function() {
 const equal = document.getElementById('equal');
 equal.addEventListener('click', function() {
   displayElement.textContent = solution;
-
+  displayValue = solution.toString().slice(0, 8);
+  num1 = solution;
+  num2 = 0;
 });
 
 
@@ -149,6 +159,7 @@ clearButton.addEventListener('click', function() {
   num2 = 0;
   displayValue = ''; // Reset the display value
   updateDisplay(); // Update the display
+  displayElement.textContent = 0;
 });
 
 
