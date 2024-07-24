@@ -15,7 +15,7 @@ const divide = function(dividend, divisor) {
   if(divisor == 0) {
     return "lmao";
   }
-  return dividend / divisor;
+  return  Math.round((dividend / divisor) * 100) / 100;
 };
 
 const operate = function(operator, num1, num2) {
@@ -60,9 +60,22 @@ for (let i = 0; i <= 9; i++) {
   });
 }
 
+// Add click event listener for decimal point
+let stop = false;
+const decimal = document.getElementById('decimal')
+decimal.addEventListener('click', function() {
+  for(i = 0; i < displayValue.length; i++) {
+    if(displayValue[i] == '.') {
+      stop = true;
+    }
+  }
+  if(stop === false)
+    displayValue += '.';
 
+  updateDisplay();
+});
 
-// Add event listeners for operation buttons
+// Add click event listeners for operation buttons
 let solution = 0;
 const addition = document.getElementById('add');
 addition.addEventListener('click', function() {
@@ -179,6 +192,9 @@ buttons.forEach(button => {
       solution = operate("/", num1, num2);
     }
 
+    console.log(num1);
+    console.log(num2);
+    console.log(operation);
   });
 });
     
