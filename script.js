@@ -87,7 +87,7 @@ decimal.addEventListener('click', function() {
 let solution = 0;
 const addition = document.getElementById('add');
 addition.addEventListener('click', function() {
-    if(num1 > 0)
+    if(num1 != 0 && num2 != 0)
     {
       displayElement.textContent = solution.toString().slice(0,8);
       num1 = solution;
@@ -101,7 +101,7 @@ addition.addEventListener('click', function() {
 
 const subtraction = document.getElementById('subtract');
 subtraction.addEventListener('click', function() {
-    if(num1 != 0)
+    if(num1 != 0 && num2 != 0)
     {
       displayElement.textContent = solution.toString().slice(0, 8);
       num1 = solution;
@@ -115,7 +115,7 @@ subtraction.addEventListener('click', function() {
 
 const multiplication = document.getElementById('multiply');
 multiplication.addEventListener('click', function() {
-    if(num1 != 0)
+    if(num1 != 0 && num2 != 0)
     {
       displayElement.textContent = solution.toString().slice(0, 8);
       num1 = solution;
@@ -129,7 +129,7 @@ multiplication.addEventListener('click', function() {
 
 const division = document.getElementById('divide');
 division.addEventListener('click', function() {
-    if(num1 != 0)
+    if(num1 != 0 && num2 != 0)
     {
       displayElement.textContent = solution.toString().slice(0, 8);
       num1 = solution;
@@ -145,10 +145,14 @@ division.addEventListener('click', function() {
 // Display the solution
 const equal = document.getElementById('equal');
 equal.addEventListener('click', function() {
-  displayElement.textContent = solution;
-  displayValue = solution.toString().slice(0, 8);
-  num1 = solution;
-  num2 = 0;
+  if(num1 == 0) {
+    displayElement.textContent = num2;
+  } else {
+    displayElement.textContent = solution;
+    displayValue = solution.toString().slice(0, 8);
+    num1 = solution;
+    num2 = 0;    
+  }
 });
 
 
